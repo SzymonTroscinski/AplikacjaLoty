@@ -9,6 +9,7 @@
         public string DepartureIata { get; set; } // Przechowuje oznaczenie lotniska odlotu (IATA)
         public string ArrivalAirport { get; set; } // Przechowuje nmiejsce przylotu
         public string ArrivalIata { get; set; } // Przechowuje oznaczenie lotniska przylotu (IATA)
-        public string FlightStatus { get; set; } // Określa, czy lot jest w powietrzu
+        public bool IsInAir { get; set; } // Określa, czy lot jest w powietrzu
+        
     }
 }

@@ -22,10 +22,14 @@
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
-      "launchUrl": "weatherforecast",
+      "launchUrl": "swagger",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
+    },
+    "app.UseSwaggerUI(c" "=>",
+    {
+      "c.SwaggerEndpoint(\"/swagger/v1/swagger.json", "Aplikacja:oty v1");"
+      c.RoutePrefix = "swagger";
     }
   }
-}
