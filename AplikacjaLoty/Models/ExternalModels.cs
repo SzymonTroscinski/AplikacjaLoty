@@ -7,11 +7,11 @@
 
     public class FlightResult
     {
-       // public Airline Airline { get; set; }
-        public FlightInfo Flight { get; set; }
-       // public Departure Departure { get; set; }
-        //public Arrival Arrival { get; set; }
-       // public LiveInfo Live { get; set; }
+       public Airline Airline { get; set; }
+       public FlightInfo Flight { get; set; }
+       public Departure Departure { get; set; }
+       public Arrival Arrival { get; set; }
+       public LiveInfo Live { get; set; }
     }
 
     public class Airline
