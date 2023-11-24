@@ -27,10 +27,7 @@ namespace FlightInfoAPI.Controllers
             var apiUrl = $"https://api.aviationstack.com/v1/flights?access_key={apiKey}";
 
             var response = await client.GetStringAsync(apiUrl); // operacja asynchroniczna
-            var flights = JsonSerializer.Deserialize<FlightResponse>(response, new JsonSerializerOptions // konwersji z formatu JSON do obiektu C#
-            {
-                PropertyNameCaseInsensitive = true
-            });
+            var flights = JsonSerializer.Deserialize<FlightResponse>(response);
 
             foreach (var flight in flights.Results)
             {
