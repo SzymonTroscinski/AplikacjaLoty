@@ -1,5 +1,4 @@
 ﻿using AplikacjaLoty.Models;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Text.Json;
 
@@ -24,12 +23,14 @@ namespace FlightInfoAPI.Controllers
         public async Task<IActionResult> GetFlights() // obsługuje żądanie HTTP GET 
         {
             var client = _httpClientFactory.CreateClient();
-            var apiKey = _configuration["5f86d1a0ee095944273f4b094e5b6665"];
+            var apiKey = _configuration["AviationStackApiKey"];
             var apiUrl = $"https://api.aviationstack.com/v1/flights?access_key={apiKey}";
 
             var response = await client.GetStringAsync(apiUrl); // operacja asynchroniczna
-            var flights = JsonSerializer.Deserialize<FlightResponse>(response); // konwersji z formatu JSON do obiektu C#
-
+            var flights = JsonSerializer.Deserialize<FlightResponse>(response, new JsonSerializerOptions // konwersji z formatu JSON do obiektu C#
+            {
+                PropertyNameCaseInsensitive = true
+            });
 
             foreach (var flight in flights.Results)
             {
@@ -41,7 +42,7 @@ namespace FlightInfoAPI.Controllers
                 }
             }
 
-            return Ok();
+            return Ok(flights.Results.Where(flight => !flight.Live.IsGround));
         }
     }
 }
