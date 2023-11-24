@@ -33,13 +33,13 @@ namespace FlightInfoAPI.Controllers
             {
                 if  (!flight.Live.IsGround)
                 {
-                    System.Console.WriteLine($" {flight.Flight?.Date} {flight.Airline?.Name} flight {flight.Flight?.Iata} " +
+                    Console.WriteLine($" {flight.Flight?.Date} {flight.Airline?.Name} flight {flight.Flight?.Iata} " +
                     $"from {flight.Departure?.Airport} ({flight.Departure?.Iata}) " +
                     $"to {flight.Arrival?.Airport} ({flight.Arrival?.Iata}) is in the air.");
                 }
             }
 
-            return Ok(flights.Results.Where(flight => !flight.Live.IsGround));
+            return Ok();
         }
     }
 }
